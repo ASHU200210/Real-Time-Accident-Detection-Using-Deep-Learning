@@ -1,4 +1,4 @@
-# 🚗 Accident Detection using Flask <a href="https://real-time-accident-detection-using-deep-learning.streamlit.app/">(🔗Link)</a>
+# 🚗 Accident Detection using Flask <a href="https://real-time-accident-detection-using-deep-learning.streamlit.app/" target="__main">🔗Link</a>
 
 This project is a real-time accident detection system developed using **Flask** and a **pretrained deep learning model**. It captures webcam video, detects vehicles, and identifies potential accidents by monitoring overlapping bounding boxes. When a possible accident is detected, a screenshot is captured and saved for analysis.
 

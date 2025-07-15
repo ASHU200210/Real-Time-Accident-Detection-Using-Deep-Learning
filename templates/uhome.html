@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Accident Detection</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        .navbar {
+            transition: background-color 0.3s ease;
+        }
+        .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #f97316;
+        }
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            min-height: 100vh;
+        }
+        .hero-text {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .wave-divider {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+        .wave-divider svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 50px;
+        }
+        .wave-divider .shape-fill {
+            fill: #f5f5f5;
+        }
+        .user-info-card {
+            background: linear-gradient(135deg, #ffffff, #f0f4ff);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .user-info-card:hover {
+            transform: translateY(-5px);
+        }
+        .cta-button {
+            background: linear-gradient(to right, #f97316, #d946ef);
+            transition: transform 0.3s ease;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+        footer {
+            background: linear-gradient(135deg, #1e3a8a, #7c3aed);
+        }
+        @media (max-width: 768px) {
+            .social-icons {
+                display: none;
+            }
+            .hero-text {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar fixed top-0 left-0 w-full bg-white z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <a href="uhome.html" class="text-2xl font-bold text-orange-500">Accident Detection</a>
+        <div class="flex items-center space-x-6">
+            <a href="uhome.html" class="nav-link text-gray-700 hover:text-orange-500">Home</a>
+            <a href="vc.html" class="nav-link text-gray-700 hover:text-orange-500">View Data</a>
+            <a href="index.html" class="nav-link text-gray-700 hover:text-orange-500">Logout</a>
+            <div class="social-icons flex space-x-4">
+                <a href="#" aria-label="Twitter" class="text-gray-700 hover:text-orange-500">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" aria-label="Facebook" class="text-gray-700 hover:text-orange-500">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="#" aria-label="Instagram" class="text-gray-700 hover:text-orange-500">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" aria-label="LinkedIn" class="text-gray-700 hover:text-orange-500">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="relative hero flex items-center justify-center">
+    <div class="text-center text-white">
+        <h1 class="hero-text text-5xl md:text-6xl font-bold">Welcome {{session['username']}}</h1>
+        <p class="text-xl mt-4">Access your dashboard for accident detection insights.</p>
+    </div>
+    <div class="wave-divider">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+        </svg>
+    </div>
+</section>
+
+<!-- User Information Section -->
+<section class="py-16 bg-gray-100">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Your Account Details</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="user-info-card">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">User Profile</h3>
+                <p class="text-gray-600"><strong>Username:</strong> {{session['username']}}</p>
+                <p class="text-gray-600"><strong>Email:</strong> {{session.get('email', 'Not available')}}</p>
+                <p class="text-gray-600"><strong>Mobile:</strong> {{session.get('mobile', 'Not available')}}</p>
+                <p class="text-gray-600"><strong>Address:</strong> {{session.get('address', 'Not available')}}</p>
+            </div>
+            <div class="user-info-card">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">Quick Actions</h3>
+                <p class="text-gray-600">View your recent activity or manage settings below.</p>
+                <a href="vc.html" class="cta-button text-white font-semibold py-2 px-4 rounded-lg mt-4 inline-block">View Data</a>
+                <a href="index.html" class="cta-button text-white font-semibold py-2 px-4 rounded-lg mt-2 inline-block">Logout</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-white py-8">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Accident Detection</h3>
+                <p class="text-gray-300">Empowering safer roads with cutting-edge AI technology.</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="uhome.html" class="text-gray-300 hover:text-orange-500">Home</a></li>
+                    <li><a href="vc.html" class="text-gray-300 hover:text-orange-500">View Data</a></li>
+                    <li><a href="index.html" class="text-gray-300 hover:text-orange-500">Logout</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Connect With Us</h3>
+                <div class="flex space-x-4">
+                    <a href="#" aria-label="Twitter" class="text-gray-300 hover:text-orange-500">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" aria-label="Facebook" class="text-gray-300 hover:text-orange-500">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram" class="text-gray-300 hover:text-orange-500">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="LinkedIn" class="text-gray-300 hover:text-orange-500">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 text-center text-gray-300">
+            <p>© 2025 Accident Detection. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+</script>
+
+
+
+</body>
+
+</html>
